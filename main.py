@@ -67,7 +67,7 @@ def notify_slack(job_status, notify_when):
                 "pretext": "New Github Action Run",
                 "color": color,
                 "mrkdwn_in": ["text"],
-                "footer": "Forked by <https://kicksaw.com|kicksaw>",
+                "footer": "Forked by <https://kicksaw.com|Kicksaw>",
             }
         ]
     }
