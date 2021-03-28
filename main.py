@@ -3,47 +3,53 @@ import os
 import json
 import sys
 
+from typing import Union
 
-def action_color(status):
+SUCCESS = "success"
+FAILURE = "failure"
+WARNING = "warning"
+
+
+def action_color(status: str):
     """
     Get a action color based on the workflow status.
     """
 
-    if status == "success":
+    if status == SUCCESS:
         return "good"
-    elif status == "failure":
+    elif status == FAILURE:
         return "danger"
 
-    return "warning"
+    return WARNING
 
 
-def action_status(status):
+def action_status(status: str):
     """
     Get a transformed status based on the workflow status.
     """
 
-    if status == "success":
+    if status == SUCCESS:
         return "passed"
-    elif status == "failure":
+    elif status == FAILURE:
         return "failed"
 
     return "passed with warnings"
 
 
-def action_emoji(status):
+def action_emoji(status: str):
     """
     Get an emoji based on the workflow status.
     """
 
-    if status == "success":
+    if status == SUCCESS:
         return ":thumbsup:"
-    elif status == "failure":
+    elif status == FAILURE:
         return ":shit:"
 
     return ":warning:"
 
 
-def notify_slack(job_status, notify_when):
+def notify_slack(job_status: str, notify_when: Union[str, None]):
     url = os.getenv("SLACK_WEBHOOK_URL")
     workflow = os.getenv("GITHUB_WORKFLOW")
     repo = os.getenv("GITHUB_REPOSITORY")
