@@ -63,8 +63,6 @@ def notify_slack(job_status, notify_when):
         "attachments": [
             {
                 "text": message,
-                "fallback": "New Github Action Run",
-                "pretext": "New Github Action Run",
                 "color": color,
                 "mrkdwn_in": ["text"],
                 "footer": "Forked by <https://kicksaw.com|Kicksaw>",
