@@ -44,7 +44,7 @@ def action_emoji(status: str):
     if status == SUCCESS:
         return ":thumbsup:"
     elif status == FAILURE:
-        return ":shit:"
+        return ":middle_finger:"
 
     return ":warning:"
 
