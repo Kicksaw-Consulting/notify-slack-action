@@ -55,6 +55,7 @@ def notify_slack(job_status: str, notify_when: Union[str, None]):
     repo = os.getenv("GITHUB_REPOSITORY")
     branch = os.getenv("GITHUB_REF")
     commit = os.getenv("GITHUB_SHA")
+    stage = os.getenv("STAGE")
 
     commit_url = f"https://github.com/{repo}/commit/{commit}"
     repo_url = f"https://github.com/{repo}/actions"
@@ -63,7 +64,7 @@ def notify_slack(job_status: str, notify_when: Union[str, None]):
     status_message = action_status(job_status)
     emoji = action_emoji(job_status)
 
-    message = f"{emoji} {workflow} {status_message} in <{repo_url}|{repo}> on <{commit_url}|{commit[:7]}>."
+    message = f"{emoji} {stage} {workflow} {status_message} in <{repo_url}|{repo}> on <{commit_url}|{commit[:7]}>."
 
     payload = {
         "attachments": [
